@@ -25,14 +25,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django.contrib.gis',
+    #'django.contrib.gis',
     # Vendor apps
     'bootstrap4',
 
     # Application apps
     'main',
     'accounts',
-    'location',
+    'dgoui'
+    
 ]
 
 MIDDLEWARE = [
@@ -74,23 +75,14 @@ EMAIL_FILE_PATH = os.path.join(CONTENT_DIR, 'tmp/emails')
 EMAIL_HOST_USER = 'test@example.com'
 DEFAULT_FROM_EMAIL = 'test@example.com'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'locationstream',
-        'USER': 'databaseuser',
-        'PASSWORD': 'databaseuserpw',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -136,7 +128,7 @@ LANGUAGES = [
 TIME_ZONE = 'UTC'
 USE_TZ = True
 
-STATIC_ROOT = os.path.join(CONTENT_DIR, 'static')
+# STATIC_ROOT = os.path.join(CONTENT_DIR, 'static')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(CONTENT_DIR, 'media')
@@ -144,10 +136,12 @@ MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(CONTENT_DIR, 'assets'),
+    os.path.join(CONTENT_DIR, 'static')
 ]
 
 LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
-
-TELEGRAM_BOT_TOKEN='1340432187:AAF1bYnRbDhh5qWcpD0clLYwx3b6WRhB9gw'
+#------------------------- EXTRA SETTINGS-------------------------
+AUTH_USER_MODEL = 'accounts.AppUser'
+#-----------------------------------------------------------------
