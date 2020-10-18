@@ -1,0 +1,28 @@
+<nav class="navbar navbar-inverse navbar-expand-lg navbar-fixed-top" role="navigation">
+    <a class="navbar-brand" href="#">{{site_brand_name}}</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-01"></button>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+        {% if request.user.is_authenticated %}
+        <ul class="nav navbar-nav ml-auto">
+            <li class="active"><a href="#fakelink">Products</a></li>
+            <li><a href="#fakelink">Features</a></li>
+            <li><a href="/accounts/log-out">Log out</a></li>
+        </ul>
+        {% else %}
+        <ul class="nav navbar-nav ml-auto">
+            <li class="active"><a href="/accounts/log-in">Log in</a></li>
+            <li><a href="/accounts/sign-up">Register</a></li>
+        </ul>
+        {%endif%}
+        <!-- <form class="navbar-form form-inline my-2 my-lg-0" action="#" role="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn"><span class="fui-search"></span></button>
+                    </span>
+                </div>
+            </div>
+        </form> -->
+    </div><!-- /.navbar-collapse -->
+</nav><!-- /navbar -->

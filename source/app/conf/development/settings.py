@@ -144,4 +144,5 @@ LOCALE_PATHS = [
 ]
 #------------------------- EXTRA SETTINGS-------------------------
 AUTH_USER_MODEL = 'accounts.AppUser'
+SITE_BRAND_NAME = 'Django UI'
 #-----------------------------------------------------------------
