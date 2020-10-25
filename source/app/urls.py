@@ -14,7 +14,7 @@ urlpatterns = [
     path('language/', ChangeLanguageView.as_view(), name='change_language'),
 
     path('accounts/', include('accounts.urls')),
-    path('forms/',include('dgoui.urls'))
+    path('maps/',include('mapbasic.urls'))
     #path('locationbot/',include('location.urls'))
 ]
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Flat UI Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="{% static 'flatui/dist/css/vendor/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Loading Flat UI Pro -->
+    <link href="{% static 'flatui/dist/css/flat-ui.css' %}" rel="stylesheet">
+    {{ usermapform.media }}
+</head>
+
+<body>
+    <!-- Nav bar here -->
+    {% include "mapbasic/navbar.html" %}
+    <!-- NavBar Ends-->
+    <div class="container">
+        <!-- <h1>Hello, world!</h1> -->
+        <!-- <a href="{% url 'mymaps' %}" class="btn btn-embossed btn-primary btn-reduce-on-xs">
+            My maps
+        </a> -->
+        <form action="" method="post">
+            {% csrf_token %}
+            {% if save_status == 'done' %}
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{save_status}}
+                AOI Succesfully saved.Create another one, or go back.
+            </div>
+            {% endif %}
+            {% if save_status == 'error' %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{errors}}
+            </div>
+            {% endif %}
+
+            {{ usermapform.non_field_errors }}
+            <div class="row">
+                <div class="col-md-7">
+                    <div id="map_for_polygon">
+                        {{usermapform.aoi}}
+                    </div>
+                </div>
+                <div class="col-md-5" style="display:flex;align-items:center;">
+                    <div id="sidebar_for_attributes">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Name of the AOI </td>
+                                <td align="center">{{usermapform.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Description of the AOI </td>
+                                <td>{{usermapform.description}}</td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <span class="helptext">{{ usermapform.name.help_text }}</span>
+            <span class="helptext">{{ usermapform.description.help_text }}</span>
+            <span class="helptext">{{ usermapform.aoi.help_text }}</span>
+
+
+
+            <input type="submit" class="btn btn-info" style="float:right;" value=Submit>
+        </form>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap 4 requires Popper.js -->
+    <script src="https://unpkg.com/popper.js@1.14.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="http://vjs.zencdn.net/6.6.3/video.js"></script>
+
+    <script src="{% static 'flatui/dist/scripts/flat-ui.js' %}"></script>
+
+</body>
+
+</html>

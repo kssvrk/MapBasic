@@ -17,10 +17,13 @@
 
 <body>
     <!-- Nav bar here -->
-    {% include "dgoui/navbar.html" %}
+    {% include "mapbasic/navbar.html" %}
     <!-- NavBar Ends-->
     <div class="container">
-        <h1>Hello, world!</h1>
+        <!-- <h1>Hello, world!</h1> -->
+        <a href="{% url 'mymaps' %}" class="btn btn-embossed btn-primary btn-reduce-on-xs">
+            My maps
+        </a>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

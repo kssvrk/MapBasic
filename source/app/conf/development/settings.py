@@ -18,6 +18,7 @@ ALLOWED_HOSTS = [
 SITE_ID = 1
 
 INSTALLED_APPS = [
+    'django.contrib.gis',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -25,14 +26,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    #'django.contrib.gis',
+    
     # Vendor apps
     'bootstrap4',
 
     # Application apps
     'main',
     'accounts',
-    'dgoui'
+    'mapbasic',
+    'floppyforms'
     
 ]
 
@@ -55,6 +57,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(CONTENT_DIR, 'templates'),
+            
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -75,13 +78,23 @@ EMAIL_FILE_PATH = os.path.join(CONTENT_DIR, 'tmp/emails')
 EMAIL_HOST_USER = 'test@example.com'
 DEFAULT_FROM_EMAIL = 'test@example.com'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'mapbasic',
+        'USER': 'databaseuser',
+        'PASSWORD': 'databaseuserpw',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -144,5 +157,5 @@ LOCALE_PATHS = [
 ]
 #------------------------- EXTRA SETTINGS-------------------------
 AUTH_USER_MODEL = 'accounts.AppUser'
-SITE_BRAND_NAME = 'Django UI'
+SITE_BRAND_NAME = 'Map Basic'
 #-----------------------------------------------------------------
